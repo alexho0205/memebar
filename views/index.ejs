@@ -100,6 +100,8 @@
                                 <img src="image/meme10.jpg" class="img-thumbnail memeimage">
                                 <img src="image/meme11.jpg" class="img-thumbnail memeimage">
                                 <img src="image/meme12.jpg" class="img-thumbnail memeimage">
+                                <img src="image/cym-logo.png" class="img-thumbnail memeimage">
+                                <img src="image/kanv.png" class="img-thumbnail memeimage">
                             </div>
                         </div>
                     </div>
@@ -107,8 +109,9 @@
                 <div class="col">
                     <div class="wrapper">
                         <div class="workingContainer wb-wrapper ">
-                            <canvas id="white_board" width="400" height="500" class="white_board" ></canvas>
+                            <canvas id="white_board" width="400" height="600" class="white_board" ></canvas>
                             <button type="button" name="" id="exportJPG" class="btn btn-primary">滙出JPG</button>
+                            <button type="button" name="" id="exportPDF" class="btn btn-primary">滙出PDF</button>
                         </div>
 
                     </div>
@@ -175,9 +178,17 @@
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <!-- fabric -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.js"></script>
+    <!-- jspdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- memebar  -->
-    <script src="js/memebar.js"></script>
+1    <script src="js/memebar.js"></script>
+
+<script>
+    window.jsPDF = window.jspdf.jsPDF;
+    
+    
+  </script>
 </body>
 
 </html>

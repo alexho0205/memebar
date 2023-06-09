@@ -6,10 +6,17 @@ var itexts = [];
 
 // add image to white board
 function addImageToWB(e) {
+ 
    let image = new fabric.Image(e.target, {
       left: 0,
-      top: 0,
+      top: 0
    });
+
+   var width = 400; // 設定寬度
+   var scaleFactor = width / image.width;
+   var height = image.height * scaleFactor;
+   image.scale(scaleFactor); // 按比例縮放圖像
+
    WB.add(image);
 }
 
@@ -49,7 +56,7 @@ WB.on('object:modified', function (opt) {
 function loadTextAttr(itext) {
    if (itext.fontFamily) {
       $('#fontFamilyOpt').val(itext.fontFamily);
-   }else{
+   } else {
       $('#fontFamilyOpt').val('default');
    }
    if (itext.fontSize) {
@@ -89,11 +96,27 @@ function setStyle(styleName, sytleValue) {
 
 function exportJPG() {
    WB.setBackgroundColor('#FFFFFF', WB.renderAll.bind(WB));
-   var dataURL = WB.toDataURL({format:'png',quality:1});
+   var dataURL = WB.toDataURL({ format: 'png', quality: 1 });
    var link = document.createElement('a');
    link.href = dataURL;
    link.download = 'canvas.png';
    link.click();
+}
+
+function exportPDF() {
+   let width = 400;
+   let height = 500;
+
+   //let pdf = new jsPDF('l', 'px', [width, height]);
+   let pdf = new jsPDF('p', 'px', [width, height]);
+   let cav = document.getElementById('white_board');
+
+   //then we get the dimensions from the 'pdf' file itselfd
+   width = pdf.internal.pageSize.getWidth();
+   height = pdf.internal.pageSize.getHeight();
+   pdf.addImage(cav, 'PNG', 0, 0, width, height);
+   pdf.save("download.pdf");
+
 }
 
 $(document).ready(function () {
@@ -104,4 +127,6 @@ $(document).ready(function () {
    $('.fontColorOpt').on('click', setTextColor);
    $('#delText').on('click', deleteObj);
    $('#exportJPG').on('click', exportJPG);
+   $('#exportPDF').on('click', exportPDF);
+
 });
