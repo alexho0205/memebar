@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Google Font-->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name"> -->
+
+
+    <style>
+        .workingContainer {
+            height: 800px;
+            border-width: 1px;
+            border-radius: 0.25rem;
+            border-style: solid;
+            background-color: whitesmoke;
+        }
+
+        .white_board {
+            height: 500px;
+            border: 1px dashed rgb(0, 98, 255);
+
+        }
+
+        .memeimage {
+            width: 100px;
+        }
+
+        .memeimage:hover {
+            opacity: 0.3;
+            cursor: pointer;
+        }
+
+        .drawImage {
+            width: 400px;
+            height: 600px;
+            background-color: #0dcaf0;
+        }
+
+        .topCanvas {
+            /* border-style: dashed; */
+        }
+
+        .middleCanvas {
+            /* border-style: dashed; */
+        }
+
+        .bottomCanvas {
+            /* border-style: dashed; */
+        }
+    </style>
+    <meta http-equiv="refresh" content="100000">
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">迷因吧 meme bar</h4>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">link1</a></li>
+                            <li><a href="#" class="text-white">link2</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+                        viewBox="0 0 24 24">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg>
+                    <strong>迷因吧 meme bar</strong>
+                </a>
+                <nav class="nav justify-content-center  ">
+                    <a class="nav-link" href="/">自由拼貼</a>
+                    <a class="nav-link" href="/format1">格式1</a>
+                </nav>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <div class="container">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col">
+                    <div class="wrapper">
+                        <div class="workingContainer">
+                            <a name="addText" id="addText" class="btn btn-primary" href="#" role="button">Add Text</a>
+                            <a name="addImage" id="addImage" class="btn btn-primary" href="#" role="button">Add
+                                Image</a>
+                            <div class="imageList container">
+                                <img src="image/f1.png" class="img-thumbnail memeimage">
+                                <img src="image/f2.png" class="img-thumbnail memeimage">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="wrapper">
+                        <div class="workingContainer wb-wrapper ">
+                            <div class="drawImage">
+                                <canvas id="topCanvas" class="topCanvas"></canvas>
+                                <canvas id="middleCanvas" class="middleCanvas"></canvas>
+                                <canvas id="bottomCanvas" class="bottomCanvas"></canvas>
+                            </div>
+
+                            <div>
+                                <button type="button" name="" id="exportJPG" class="btn btn-primary">滙出JPG</button>
+                                <button type="button" name="" id="exportPDF" class="btn btn-primary">滙出PDF</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="wrapper">
+                        <div class="workingContainer">
+
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">文字一</label>
+                                    <textarea class="form-control" name="" id="txtArea1" rows="3">新增一段文字</textarea>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="">字型</label>
+                                        </div>
+                                        <select class="custom-select" id="fontStyle1">
+                                            <option selected>請選擇...</option>
+                                            <option value="default">系統字體</option>
+                                            <option value="標楷體">標楷體</option>
+                                        </select>
+
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="">字體大小</label>
+                                        </div>
+                                        <select class="custom-select" id="fontSize1">
+                                            <option selected>請選擇...</option>
+                                            <option value="15">小</option>
+                                            <option value="30">中</option>
+                                            <option value="45">大</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="">顏色</label>
+                                        </div>
+                                        <select class="custom-select" id="fontColor1">
+                                            <option selected>請選擇...</option>
+                                            <option value="black">黑</option>
+                                            <option value="white">白</option>
+                                            <option value="yellow">黃</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">文字二</label>
+                                    <textarea class="form-control" name="" id="txtArea2" rows="3">新增一段文字</textarea>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">字型</label>
+                                        </div>
+                                        <select class="custom-select" id="fontStyle2">
+                                            <option selected>請選擇...</option>
+                                            <option value="default">系統字體</option>
+                                            <option value="標楷體">標楷體</option>
+                                        </select>
+
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="inputGroupSelect01">字體大小</label>
+                                        </div>
+                                        <select class="custom-select" id="fontSize">
+                                            <option selected>請選擇...</option>
+                                            <option value="15">小</option>
+                                            <option value="30">中</option>
+                                            <option value="45">大</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="">顏色</label>
+                                        </div>
+                                        <select class="custom-select" id="fontColor2">
+                                            <option selected>請選擇...</option>
+                                            <option value="black">黑</option>
+                                            <option value="white">白</option>
+                                            <option value="yellow">黃</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">文字一</label>
+                                    <textarea class="form-control" name="" id="txtArea3" rows="3">新增一段文字</textarea>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="">字型</label>
+                                        </div>
+                                        <select class="custom-select" id="fontStyle3">
+                                            <option selected>請選擇...</option>
+                                            <option value="default">系統字體</option>
+                                            <option value="標楷體">標楷體</option>
+                                        </select>
+
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="">字體大小</label>
+                                        </div>
+                                        <select class="custom-select" id="fontSize3">
+                                            <option selected>請選擇...</option>
+                                            <option value="15">小</option>
+                                            <option value="30">中</option>
+                                            <option value="45">大</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend ms-1">
+                                            <label class="input-group-text" for="inputGroupSelect01">顏色</label>
+                                        </div>
+                                        <select class="custom-select" id="fontColor3">
+                                            <option selected>請選擇...</option>
+                                            <option value="black">黑</option>
+                                            <option value="white">白</option>
+                                            <option value="yellow">黃</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="delText">刪除</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- place footer here -->
+        <div class="container mt-5">
+            <center>
+                <p>alexho0205@gmail.com</p>
+            </center>
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- fabric -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.js"></script>
+    <!-- jspdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- memebar  -->
+    <script src="js/format1.js"></script>
+
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+
+
+    </script>
+</body>
+
+</html>
