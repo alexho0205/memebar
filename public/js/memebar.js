@@ -107,8 +107,10 @@ function exportPDF() {
    let width = 400;
    let height = 500;
 
-   //let pdf = new jsPDF('l', 'px', [width, height]);
-   let pdf = new jsPDF('p', 'px', [width, height]);
+   let pdf = new jsPDF('l', 'px', [width, height]);
+   //let pdf = new jsPDF('p', 'px', [width, height]);
+   
+
    let cav = document.getElementById('white_board');
 
    //then we get the dimensions from the 'pdf' file itselfd

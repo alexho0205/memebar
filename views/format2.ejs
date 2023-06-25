@@ -32,6 +32,9 @@
         .memeimage {
             width: 100px;
         }
+        .imageObj{
+            width: 100px;
+        }
 
         .memeimage:hover {
             opacity: 0.3;
@@ -39,21 +42,21 @@
         }
 
         .drawImage {
-            width: 400px;
-            height: 600px;
+            width: 850px;
+            height: 500px;
             background-color: #0dcaf0;
         }
 
         .topCanvas {
-            /* border-style: dashed; */
+            border-style: dashed;
         }
 
         .middleCanvas {
-            /* border-style: dashed; */
+            border-style: dashed;
         }
 
         .bottomCanvas {
-            /* border-style: dashed; */
+            border-style: dashed;
         }
     </style>
 </head>
@@ -90,7 +93,6 @@
                 <nav class="nav justify-content-center  ">
                     <a class="nav-link" href="/">自由拼貼</a>
                     <a class="nav-link" href="/format1">格式1</a>
-                    <a class="nav-link" href="/format2">格式2</a>
                 </nav>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,29 +108,30 @@
                 <div class="col">
                     <div class="wrapper">
                         <div class="workingContainer">
-                            <a name="addText" id="addText" class="btn btn-primary" href="#" role="button">Add Text</a>
-                            <a name="addImage" id="addImage" class="btn btn-primary" href="#" role="button">Add
-                                Image</a>
+                           <h3>background</h3>
                             <div class="imageList container">
                                 <img src="image/f1.png" class="img-thumbnail memeimage">
-                                <img src="image/f2.png" class="img-thumbnail memeimage">
-
+                                <img src="image/f3.png" class="img-thumbnail memeimage">
+                            </div>
+                            <h3>images</h3>
+                            <div class="imageList container">
+                                <img src="image/img1.png" class="img-thumbnail imageObj">
+                                <img src="image/img2.png" class="img-thumbnail imageObj">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="wrapper">
-                        <div class="workingContainer wb-wrapper ">
-                            <div class="drawImage">
+                    <div class="wrapper" id="w1" >
+                        <div class="workingContainer wb-wrapper  " id="w2">
+                            <div class="drawImage" id="drawImage">
                                 <canvas id="topCanvas" class="topCanvas"></canvas>
                                 <canvas id="middleCanvas" class="middleCanvas"></canvas>
                                 <canvas id="bottomCanvas" class="bottomCanvas"></canvas>
                             </div>
 
                             <div>
-                                <a href="#" id="exportJPG" class="btn btn-primary">save png</a>
-                                <a href="/login" class="btn btn-primary">儲存</a>
+                                <a href="#" id="exportPDFBtn" class="btn btn-primary">滙出PDF</a>
                             </div>
 
                         </div>
@@ -290,13 +293,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.js"></script>
     <!-- jspdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 
     <!-- memebar  -->
-    <script src="js/format1.js"></script>
+    <script src="js/format2.js"></script>
 
     <script>
         window.jsPDF = window.jspdf.jsPDF;
-
+        window.html2canvas = html2canvas;
 
     </script>
 </body>

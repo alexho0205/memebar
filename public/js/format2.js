@@ -1,8 +1,8 @@
 
 // 建制(中間)畫布區
-var topCanvas = new fabric.Canvas('topCanvas', { preserveObjectStacking: true, width: 400, height: 200 });
-var middleCanvas = new fabric.Canvas('middleCanvas', { preserveObjectStacking: true, width: 400, height: 200 });
-var bottomCanvas = new fabric.Canvas('bottomCanvas', { preserveObjectStacking: true, width: 400, height: 200 });
+var topCanvas = new fabric.Canvas('topCanvas', { preserveObjectStacking: true, width: 850, height: 150 });
+var middleCanvas = new fabric.Canvas('middleCanvas', { preserveObjectStacking: true, width: 850, height: 200 });
+var bottomCanvas = new fabric.Canvas('bottomCanvas', { preserveObjectStacking: true, width: 850, height: 150 });
 // 畫布中所有的物件
 var itexts = [];
 
@@ -53,18 +53,25 @@ function setStyle(styleName, sytleValue) {
 
 
 function exportJPG() {
-   // 無法滙出包含canvas的HTML元件 , 一次滙出一個 canvas 是比較適合的方法.
-   alert('export JPG');
+   WB.setBackgroundColor('#FFFFFF', WB.renderAll.bind(WB));
+   var dataURL = WB.toDataURL({ format: 'png', quality: 1 });
+   var link = document.createElement('a');
+   link.href = dataURL;
+   link.download = 'canvas.png';
+   link.click();
 }
 
 function exportPDF() {
-    // 無法滙出包含canvas的HTML元件 , 一次滙出一個 canvas 是比較適合的方法.
-    alert('export pdf');
+
+   // 無法滙出包含canvas的HTML元件 , 一次滙出一個 canvas 是比較適合的方法.
+   alert('export pdf');
+  
+
 }
 
 var text1, text2, text3 = null;
 function initText() {
-   text1 = new fabric.IText('新增一段文字', { fontSize: 45, fontFamily: 'default' });
+   text1 = new fabric.IText('新增圖片', { fontSize: 45, fontFamily: 'default' });
    topCanvas.add(text1);
    text2 = new fabric.IText('新增一段文字', { fontSize: 45, fontFamily: 'default', editable: false });
    middleCanvas.add(text2);
@@ -153,6 +160,23 @@ function setStyle(itext, styleName, styleValue) {
 function addImageToGB(e) {
    let imageUrl = e.target.src;
    $('.drawImage').css('background-image', 'url(' + imageUrl + ')');
+   $('.drawImage').css('background-size', 'cover');
+   $('.drawImage').css('background-repeat', 'no-repeat');
+   $('.drawImage').css('background-position', 'center center');
+}
+
+function addImageToTop(e) {
+   let image = new fabric.Image(e.target, {
+      left: 0,
+      top: 0
+   });
+
+   var width = 50; // 設定寬度
+   var scaleFactor = width / image.width;
+   var height = image.height * scaleFactor;
+   image.scale(scaleFactor); // 按比例縮放圖像
+
+   topCanvas.add(image);
 
 }
 
@@ -172,7 +196,11 @@ $(document).ready(function () {
    $('#fontColor2').on('change', setTextFontColor2);
    $('#fontColor3').on('change', setTextFontColor3);
    $('.memeimage').on('click', addImageToGB);
-   
+   $('#exportPDFBtn').on('click', exportPDF);
+   $('.imageObj').on('click', addImageToTop);
+
+
+
 
 
 
